@@ -10,30 +10,30 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import EntitiesExamen.MyDashBoardEntity;
-import MetierExamen.MyDashBoardMerier;
+import Entities.OffreEntity;
+import Metier.OffreMerier;
 
 
-@Path(value="MyDashbord")
+@Path(value="Offre")
 
-public class MyDashbordRessources {
+public class OffreRessources {
 	
 	
 		
-		static MyDashBoardMerier metier=new MyDashBoardMerier();
+		static OffreMerier metier=new OffreMerier();
 		
 		@GET
 		@Produces({ MediaType.APPLICATION_JSON })
-		public Response getListeRendezVous(){
+		public Response getListeOffre(){
 			
-				return Response.status(Status.OK).entity(metier.getListeMyDashBoard()).build();
+				return Response.status(Status.OK).entity(metier.getListeOffre()).build();
 		
 		}
 		@PUT
 		@Path("{id}")
 		@Consumes({ MediaType.APPLICATION_XML })
-		public Response updateRendezVous(@PathParam(value="id")int id, MyDashBoardEntity MyDashbordAux){
-			if(metier.updateRendezVous(MyDashbordAux))
+		public Response updateOffre(@PathParam(value="id")int id, OffreEntity Offre){
+			if(metier.updateOffre(Offre))
 				return Response.status(Status.OK).build();
 			return Response.status(Status.NOT_FOUND).build();
 		}
